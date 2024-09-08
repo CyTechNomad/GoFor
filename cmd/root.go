@@ -48,11 +48,13 @@ func Execute() {
 
 func init() {
 	// Here you can define global flags and configuration settings
-	RootCmd.PersistentFlags().StringP("config", "c", "", "config file (default is $HOME/.gofor.yaml)")
+	RootCmd.PersistentFlags().StringP("config", "C", "", "config file (default is $HOME/.gofor.yaml)")
 
 	RootCmd.PersistentFlags().StringArrayVarP(&headers, "header", "H", []string{}, "HTTP headers to include in the request")
-	RootCmd.PersistentFlags().IntVarP(&timeout, "timeout", "t", 30, "Timeout for the request in seconds")
-	RootCmd.PersistentFlags().StringVarP(&auth.Token, "token", "T", "", "Bearer token for authentication")
+	RootCmd.PersistentFlags().IntVarP(&timeout, "timeout", "T", 30, "Timeout for the request in seconds")
+	RootCmd.PersistentFlags().StringVarP(&auth.Token, "token", "t", "", "Bearer token for authentication")
+    RootCmd.PersistentFlags().StringVarP(&auth.Username, "username", "u", "", "Username for basic authentication")
+    RootCmd.PersistentFlags().StringVarP(&auth.Password, "password", "p", "", "Password for basic authentication")
 }
 
 func splitHeader(header string) []string {
